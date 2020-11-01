@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          margin: EdgeInsets.only(left: width * 0.07),
+          margin: EdgeInsets.symmetric(horizontal: width * 0.07),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -93,6 +93,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Icon(Icons.location_on),
                   Text("722 Manhattan New York")
+                ],
+              ),
+              Text("ABOUT ME"),
+              ShaderMask(
+                shaderCallback: (rectangle) {
+                  return LinearGradient(
+                          colors: [Colors.black, Colors.transparent],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter)
+                      .createShader(Rect.fromLTRB(
+                          0, 0, rectangle.width, rectangle.height));
+                },
+                child: Text(
+                    "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Text("FOLLOWER"),
+                      Text("2318"),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text("FOLLOWING"),
+                      Text("788"),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text("FREINDS"),
+                      Text("168"),
+                    ],
+                  ),
                 ],
               )
             ],
