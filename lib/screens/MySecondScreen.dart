@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../utilities/style.dart';
+import '../shared_ui/myWidgets.dart';
 
 class MySecondScreen extends StatefulWidget {
   @override
@@ -6,8 +8,9 @@ class MySecondScreen extends StatefulWidget {
 }
 
 class _MySecondScreenState extends State<MySecondScreen> {
-  var _lightStyle = TextStyle(color: Color(0xff707f78));
-  var _numbersStyle = TextStyle(fontSize: 28, fontWeight: FontWeight.w500);
+  static  const _lightStyle = MyStyle.lightStyle;
+  static const _numbersStyle= MyStyle.numbersStyle;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -108,47 +111,7 @@ class _MySecondScreenState extends State<MySecondScreen> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: width * 0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          "FOLLOWER",
-                          style: _lightStyle,
-                        ),
-                        Text(
-                          "2318",
-                          style: _numbersStyle,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "FOLLOWING",
-                          style: _lightStyle,
-                        ),
-                        Text(
-                          "788",
-                          style: _numbersStyle,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "FRIENDS",
-                          style: _lightStyle,
-                        ),
-                        Text(
-                          "168",
-                          style: _numbersStyle,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                child: MyWidgets.drawFollowersTable(_lightStyle, _numbersStyle),
               ),
               SizedBox(
                 height: height * 0.02,
@@ -174,18 +137,7 @@ class _MySecondScreenState extends State<MySecondScreen> {
                     SizedBox(
                       height: height * 0.02,
                     ),
-                    ShaderMask(
-                      shaderCallback: (rectangle) {
-                        return LinearGradient(
-                                colors: [Colors.black, Colors.transparent],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter)
-                            .createShader(Rect.fromLTRB(
-                                0, 0, rectangle.width, rectangle.height));
-                      },
-                      child: Text(
-                          "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum"),
-                    ),
+                    MyWidgets.drawAboutMeParagraph(),
                     SizedBox(
                       height: height * 0.02,
                     ),

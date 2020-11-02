@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:ui_design002/shared_ui/myWidgets.dart';
+import '../utilities/style.dart';
 class MyFirstScreen extends StatefulWidget {
   @override
   _MyFirstScreenState createState() => _MyFirstScreenState();
 }
 
 class _MyFirstScreenState extends State<MyFirstScreen> {
-  var _lightStyle = TextStyle(color: Color(0xff707f78));
-  var _numbersStyle = TextStyle(fontSize: 28, fontWeight: FontWeight.w500);
+static  const _lightStyle = MyStyle.lightStyle;
+static const _numbersStyle= MyStyle.numbersStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -100,59 +101,8 @@ class _MyFirstScreenState extends State<MyFirstScreen> {
                 "ABOUT ME",
                 style: _lightStyle.copyWith(fontSize: 14),
               ),
-              ShaderMask(
-                shaderCallback: (rectangle) {
-                  return LinearGradient(
-                          colors: [Colors.black, Colors.transparent],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter)
-                      .createShader(Rect.fromLTRB(
-                          0, 0, rectangle.width, rectangle.height));
-                },
-                child: Text(
-                    "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum"),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "FOLLOWER",
-                        style: _lightStyle,
-                      ),
-                      Text(
-                        "2318",
-                        style: _numbersStyle,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "FOLLOWING",
-                        style: _lightStyle,
-                      ),
-                      Text(
-                        "788",
-                        style: _numbersStyle,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "FRIENDS",
-                        style: _lightStyle,
-                      ),
-                      Text(
-                        "168",
-                        style: _numbersStyle,
-                      ),
-                    ],
-                  ),
-                ],
-              )
+              MyWidgets.drawAboutMeParagraph(),
+              MyWidgets.drawFollowersTable(_lightStyle, _numbersStyle)
             ],
           ),
         ),
