@@ -11,10 +11,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'sfdisplay',
+          textTheme: TextTheme(
+              bodyText2: TextStyle(
+                  color: Colors.black, fontSize: 16, letterSpacing: 0.8))),
       home: MyHomePage(),
     );
   }
@@ -26,6 +30,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var _lightStyle = TextStyle(color: Color(0xff707f78));
+  var _numbersStyle = TextStyle(fontSize: 28, fontWeight: FontWeight.w500);
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -33,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Stack(children: [
       Container(
-        color: Colors.white,
+        color: Color(0xffe4eae3),
       ),
       ClipPath(
           clipper: MyClipper(),
@@ -54,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {},
             icon: Icon(
               Icons.menu,
-              color: Colors.white,
+              color: Color(0xffe4eae3),
             ),
           ),
           actions: [
@@ -62,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {},
               icon: Icon(
                 Icons.settings,
-                color: Colors.white,
+                color: Color(0xffe4eae3),
               ),
             )
           ],
@@ -73,12 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
       Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          margin: EdgeInsets.symmetric(horizontal: width * 0.07),
+          margin: EdgeInsets.only(
+              left: width * 0.07, right: width * 0.07, bottom: height * 0.02),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: height * 0.4,
+                height: height * 0.35,
               ),
               CircleAvatar(
                 radius: width * 0.13,
@@ -88,14 +97,29 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 "Marco Assensio",
+                style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 22,
+                    color: Color(0xff444a43)),
               ),
               Row(
                 children: [
                   Icon(Icons.location_on),
-                  Text("722 Manhattan New York")
+                  Text(
+                    "722 Manhattan New York",
+                    style: TextStyle(
+                        color: Color(0xff484b46),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14),
+                  )
                 ],
               ),
-              Text("ABOUT ME"),
+              Text(
+                "ABOUT ME",
+                style: _lightStyle.copyWith(fontSize: 14),
+
+                // style: TextStyle(color: Color(0xff838383)),
+              ),
               ShaderMask(
                 shaderCallback: (rectangle) {
                   return LinearGradient(
@@ -113,20 +137,38 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Column(
                     children: [
-                      Text("FOLLOWER"),
-                      Text("2318"),
+                      Text(
+                        "FOLLOWER",
+                        style: _lightStyle,
+                      ),
+                      Text(
+                        "2318",
+                        style: _numbersStyle,
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("FOLLOWING"),
-                      Text("788"),
+                      Text(
+                        "FOLLOWING",
+                        style: _lightStyle,
+                      ),
+                      Text(
+                        "788",
+                        style: _numbersStyle,
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      Text("FREINDS"),
-                      Text("168"),
+                      Text(
+                        "FRIENDS",
+                        style: _lightStyle,
+                      ),
+                      Text(
+                        "168",
+                        style: _numbersStyle,
+                      ),
                     ],
                   ),
                 ],
