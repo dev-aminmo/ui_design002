@@ -73,7 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             )
           ],
-          title: Text("SIGN UP"),
+          title: Text(
+            "SIGN UP",
+            style: TextStyle(letterSpacing: 0.8, fontWeight: FontWeight.w500),
+          ),
           centerTitle: true,
         ),
       ),
@@ -81,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.transparent,
         body: Container(
           margin: EdgeInsets.only(
-              left: width * 0.07, right: width * 0.07, bottom: height * 0.02),
+              left: width * 0.07, right: width * 0.07, bottom: height * 0.03),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Row(
                 children: [
-                  Icon(Icons.location_on),
+                  Icon(
+                    Icons.location_on,
+                    color: _lightStyle.color,
+                  ),
                   Text(
                     "722 Manhattan New York",
                     style: TextStyle(
