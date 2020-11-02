@@ -7,4 +7,4 @@ A new Flutter application.
 This project is a ui implemented in flutter.<br/>
 
 <img src="github/Screenshot1.png" width="350"> <br/>
-<img src="github/Screenshot2.png" width="350">
+<img src="github/Screenshot3.png" width="350">
